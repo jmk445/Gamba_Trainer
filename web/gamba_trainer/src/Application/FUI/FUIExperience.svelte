@@ -1,7 +1,14 @@
 <script>
     import p5 from "./p5/index";
-    import AppMain from "../common/AppMain.svelte";
-    import { onMount } from "svelte";        
+    import AppMain from "../components/common/AppMain.svelte";
+
+    import left from "../components/asset/left.gif";
+    import right from "../components/asset/right.gif";
+    import pluck from "../components/asset/pluck.gif";
+    import twirl from "../components/asset/twirl.gif";
+    import poke from "../components/asset/poke.gif";
+
+    import { onMount } from "svelte";    
     import { getInferenceResult } from "./stores/tf4micro-motion-kit copy";
 
     let clickCount = -1;
@@ -38,58 +45,39 @@
             p5.triggerGesture(index);
         }, 500);
     });
+    const strAsset = {
+        bannerTitle : "FUI",
+        explainTitle : "5가지의 제스처",
+        numOne : "왼쪽",
+        numTwo : "오른쪽",
+        numThree : "돌리기(빠르게)",
+        numFour : "퉁기기(음악 변경)",
+        numFive : "찌르기",
+        explainDesc : "보드를 손가락 뒤쪽(끝부분에 가까이)에 부착합니다. LED가 사용자를 향하고 USB 커넥터가 손목을 향하고 있는지 확인합니다."
+    }
 </script>
 
-<AppMain title="FUI" appName="fui">
+<AppMain bannerTitle={strAsset.bannerTitle} appName="fui">
     <div class="fui-explanation-container">
-        <h2>5가지의 제스처:</h2>
+        <h2>{strAsset.explainTitle}</h2>
         <ol>
-            <li><p>Swipe left</p></li>
-            <li><p>Swipe right</p></li>
-            <li><p>Twirl (do so quickly!)</p></li>
-            <li><p>Pluck (which changes the drum loop)</p></li>
-            <li><p>Poke</p></li>
+            <li><p>{strAsset.numOne}</p></li>
+            <li><p>{strAsset.numTwo}</p></li>
+            <li><p>{strAsset.numThree}</p></li>
+            <li><p>{strAsset.numFour}</p></li>
+            <li><p>{strAsset.numFive}</p></li>
         </ol>
         <div class="img-gesture-container">
-            <img
-                src="./asset/left.gif"
-                loading="lazy"
-                alt="left gesture"
-                class="image-6"
-            />
-            <img
-                src="./asset/right.gif"
-                loading="lazy"
-                alt="right gesture"
-                class="image-7"
-            />
-            <img
-                src="./asset/twirl.gif"
-                loading="lazy"
-                alt="twirl gesture"
-                class="image-8"
-            />
-            <img
-                src="./asset/pluck.gif"
-                loading="lazy"
-                alt="pluck gesture"
-                class="image-9"
-            />
-            <img
-                src="./asset/poke.gif"
-                loading="lazy"
-                alt="poke gesture"
-                class="image-10"
-            />
+            <img src={left} loading="lazy" alt="left gesture" class="image-6" />
+            <img src={right} loading="lazy" alt="right gesture" class="image-7"/>
+            <img src={twirl} loading="lazy" alt="twirl gesture" class="image-8"/>
+            <img src={pluck} loading="lazy" alt="pluck gesture"class="image-9"/>
+            <img src={poke} loading="lazy" alt="poke gesture" class="image-10"/>
         </div>
 
-        <p>
-            보드를 손가락 뒤쪽(끝부분에 가까이)에 부착합니다. LED가 사용자를
-            향하고 USB 커넥터가 손목을 향하고 있는지 확인합니다.
-        </p>
-        <button on:click={handleClick} class="btn-fill">wow</button>
+        <p>{strAsset.explainDesc}</p>
     </div>
-    <div bind:this={sketchEl} class="p5-container" />
+    <div bind:this={sketchEl} on:click={handleClick} class="p5-container" />
 </AppMain>
 
 <style lang="scss">
@@ -101,12 +89,16 @@
         padding: 20px 102px;
         margin-bottom: 128px;
         ol {
-            margin-bottom: 20px;
+            margin: 12px 0 20px;
+            padding-left: 16px;
+            li {
+                list-style-type: decimal;
+            }
         }
 
         .img-gesture-container {
             display: flex;
-            flex-direction: row;
+            flex-wrap: wrap;
             gap: 12px;
             margin-bottom: 20px;
             img {
@@ -117,6 +109,6 @@
     }
     .p5-container {
         border-radius: 8px;
-        height: 500px;
+        height: calc(100vh - 100px);
     }
 </style>

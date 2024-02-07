@@ -32,6 +32,7 @@ h2,
 h3 {
   line-height: 1.2;
   letter-spacing: 1.2;
+  word-break: keep-all;
 }
 
 button {
@@ -48,6 +49,7 @@ button {
   background-color: $color-lightblue;
   padding: 40px;
   border-radius: 10px;
+
   h1 {
     margin-bottom: 10px;
   }
@@ -57,14 +59,13 @@ button {
   padding: 14px 36px;
   font-size: 1rem;
   border-radius: 162px;
-  letter-spacing: 0.1px;
+  // letter-spacing: 0.1px;
   align-items: center;
   min-width: 130px;
 
-  @extend .subhead-1;
+  // @extend .subhead-1;
 
   // transition: transform 0.25s;
-
 
   .icon {
     margin-left: -6px;
@@ -85,6 +86,7 @@ button {
     &:before {
       background-color: transparent;
     }
+
     &:disabled {
       &:before {
         background-color: transparent;
@@ -102,7 +104,7 @@ button {
   @extend .button;
   background-color: white;
   border: 1px solid $color-btn-blue;
-  color: $color-btn-blue;
+  color: black;
 
   &:disabled {
     background-color: white;
@@ -112,10 +114,12 @@ button {
     pointer-events: none;
   }
   &:hover{
-    background-color: white;
-    border: 1px solid $color-btn-hover-blue;
-    color: $color-btn-hover-blue;
+    background-color: $color-lightsky;
   }
+  &:active{
+    background-color: $color-btn-active-blue;
+  }
+
 
 }
 .btn-fill{
@@ -131,7 +135,9 @@ button {
   }
   &:hover{
     background-color: $color-btn-hover-blue;
-    color: white;
+  }
+  &:active{
+    background-color: $color-nav-blue;
   }
 }
 
@@ -141,6 +147,7 @@ button {
 
 .icon-button {
   padding: 0;
+
   img {
     margin: 0;
   }
@@ -162,13 +169,14 @@ button {
   height: 8px;
   border-radius: 50%;
   display: inline-block;
-  margin-right: 10px;
+
+
   &.red {
-    background-color: #d92525;
+    background-color: #F64646;
   }
 
   &.green {
-    background-color: #20e200;
+    background-color: #3FD0FE;
   }
 }
 
@@ -179,7 +187,11 @@ button {
 .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
   background-color: $color-deepblue;
 }
-
+nav {
+  position: sticky;
+  top: 10px;
+  z-index: 1;
+}
 .nav {
   // height: 64px;
   margin-bottom: 72px;
@@ -211,6 +223,7 @@ button {
         opacity: 0.25;
         pointer-events: none;
       }
+
       &.active {
         background-color: $color-nav-blue ;
         color: white;
@@ -234,6 +247,6 @@ button {
   border-radius: 50px;
 }
 
-main {
-  margin-bottom: 100px;
+main, .main {
+  margin-bottom: 128px;
 }

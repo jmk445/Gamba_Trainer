@@ -1,19 +1,25 @@
 <script>    
-    import AppMain from "../common/AppMain.svelte";
+    import AppMain from "../components/common/AppMain.svelte";
     import {handleClickConnect, isConnected} from "./stores/tf4micro-motion-kit copy";
     
     function handleClickConnect_(){
         handleClickConnect();
     }
+
+    const strAsset = {
+        bannerTitle : "FUI",
+        BluetoothTitle : "Bluetooth를 통해 키트 연결",
+        bluetoothBtn : "연결"
+    }
 </script>
 
 
-<AppMain title="FUI" appName="fui">
+<AppMain bannerTitle={strAsset.bannerTitle} appName="fui">
     <div class="bluetooth-container">
-        <p>Bluetooth를 통해 키트 연결</p>
+        <p>{strAsset.BluetoothTitle}</p>
         <button class="btn-connect btn-stroke" on:click={handleClickConnect_}>
             <img src="#" alt="블루투스" />
-            <span>Connect</span>
+            <span>{strAsset.bluetoothBtn}</span>
         </button>
     </div>
 </AppMain>

@@ -17,6 +17,7 @@ limitations under the License.
 * @author Rikard Lindstrom <rlindstrom@google.com>
 */
 -->
+<!-- 안씀 -->
 <script>
   import { onMount } from "svelte";
   import { get } from "svelte/store";
@@ -162,7 +163,7 @@ limitations under the License.
 
 <div class="model-choose contents">
   <Description
-    title="모델 설정 선택"
+    title="모델 선택"
     explanation="아래 모델 중 원하는 모델을 선택하여 학습을 징행시킬 수 있습니다."
   />
 </div>
